@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>conclave.pd.refresh</string>
+
+    <key>Program</key>
+    <string>/bin/zsh</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/zsh</string>
+      <string>-c</string>
+      <string>
+        launchctl setenv XDG_CONFIG_HOME "${HOME}/.dotfiles/config";
+        launchctl setenv XDG_STATE_HOME "${HOME}/.dotfiles/state";
+        launchctl setenv ZDOTDIR "${HOME}/.dotfiles/config/zsh";
+        ${HOME}/.dotfiles/bin/pd --pd-refresh
+      </string>
+    </array>
+
+    <key>Nice</key>
+    <integer>1</integer>
+
+    <key>RunAtLoad</key>
+    <true />
+
+    <key>KeepAlive</key>
+    <false />
+
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/conclave.pd.refresh.out</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/conclave.pd.refresh.err</string>
+  </dict>
+</plist>

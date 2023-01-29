@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -x
+
+# Update Dotfiles
+# ---------------------
+(cd ~/.dotfiles && git pull --rebase --autostash)
+
+# Update Emacs config
+# ---------------------
+doom upgrade
+doom sync
+
+# Update Vim packages
+# ---------------------
+vim +PlugInstall +PlugUpgrade +PlugUpdate +qall
+
+# Update Homebrew packages
+# --------------------------
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+brew update
+brew upgrade
+brew cleanup
+
+# Update Hosts file
+# --------------------------
+[[ "${1}" == "--update-hosts" ]] && update-hosts
+
+# Update Submodules
+# --------------------------
+bump-submodules

@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+# Build p/d binary in local bin directory
+# Generate initial project catalog file
+
+set -ex
+
+export DOTFILES_DIR="${HOME}/.dotfiles"
+source "${ASDF_DIR}/asdf.sh"
+
+if [[ -z "$(command -v go)" ]]; then
+  echo "Warning: go executable not found. Skipping p/d installation."
+  exit 1
+fi
+
+if [[ -z "${XDG_DATA_HOME}" ]]; then
+  echo "Warning: XDG_DATA_HOME env var not set. Skipping p/d installation."
+  exit 1
+fi
+
+if [[ -z "${DOTFILES_DIR}" ]]; then
+  echo "Warning: DOTFILES_DIR env var not set. Skipping p/d installation."
+  exit 1
+fi
+
+builtin cd ${XDG_DATA_HOME}/pd
+
+go get
+
+go build -o ${DOTFILES_DIR}/bin/pd main.go
+
+pd --pd-refresh &

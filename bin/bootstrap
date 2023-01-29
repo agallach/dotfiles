@@ -1,0 +1,188 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/bootstrap"
+
+ensure_xcode_is_set_up
+ensure_gpg_permissions_are_set_correctly
+ensure_locals_are_created
+
+setup :xdg_base_directory_environment do
+  install_launchagent "env.xdg"
+end
+
+setup :homebrew do
+  install_homebrew
+end
+
+setup :core_cli_tools do
+  brew_install :binutils
+  brew_install :coreutils
+  brew_install :curl
+  brew_install :diffutils
+  brew_install :fd
+  brew_install :findutils
+  brew_install :gawk
+  brew_install :git
+  brew_install :gnu_indent
+  brew_install :git_lfs
+  brew_install :gnu_sed
+  brew_install :gnu_tar
+  brew_install :gnu_which
+  brew_install :gnupg
+  brew_install :gnutls
+  brew_install :grep
+  brew_install :less
+  brew_install :ripgrep
+  brew_install :watch
+  brew_install :wdiff
+  brew_install :wget
+end
+
+setup :build_tools do
+  brew_install :bzip2
+  brew_install :gcc
+  brew_install :gettext
+  brew_install :icu4c
+  brew_install :imagemagick
+  brew_install :libffi
+  brew_install :libgccjit
+  brew_install :libxml2
+  brew_install :llvm
+  brew_install :ncurses
+  brew_install :openssl
+  brew_install :readline
+  brew_install :zlib
+end
+
+setup :gui_apps do
+  cask_install "1password"
+  cask_install :amethyst
+  cask_install :appcleaner
+  cask_install :authy
+  cask_install :bettertouchtool
+  cask_install :choosy
+  cask_install :dash
+  cask_install :docker
+  cask_install :keycastr
+  cask_install :launchbar
+  cask_install :launchcontrol
+  cask_install :launchpad_manager
+  cask_install :name_mangler
+  cask_install :pandora
+  cask_install :responsively
+  cask_install :screenflow
+  cask_install :slack
+  cask_install :spotify
+  cask_install :sqlpro_studio
+  cask_install :vlc
+  cask_install :zoom
+end
+
+setup :quick_look_viewers do
+  cask_install :jupyter_notebook_viewer
+  cask_install :qlcolorcode
+  cask_install :qlimagesize
+  cask_install :qlmarkdown
+  cask_install :qlprettypatch
+  cask_install :qlvideo
+  cask_install :quicklook_csv
+  cask_install :quicklook_json
+  cask_install :quicklookase
+  cask_install :suspicious_package
+  cask_install :webpquicklook
+  install_quicklook_viewers
+end
+
+setup :development_tools do
+  brew_install :awscli
+  brew_install :bash
+  brew_install :bat
+  brew_install :direnv
+  brew_install :exa
+  brew_install :fzf
+  brew_install :gh
+  brew_install :git_delta
+  brew_install :httpie, options: :head
+  brew_install :pyenv
+  brew_install :source_highlight
+  brew_install :tmux, options: :head
+  brew_install :zsh
+  brew_install :zsh_completions
+
+  # Universal ctags (replaces Exuberant ctags)
+  brew_tap "universal-ctags/universal-ctags"
+  brew_install :universal_ctags, options: [:head, :force]
+
+  # GNU Global (universal-ctags-compatible)
+  brew_tap "jmromer/global"
+  brew_install "jmromer/global/global"
+
+  brew_tap "homebrew/cask-versions"
+  cask_install :iterm2
+end
+
+setup :text_editing_cli_tools do
+  brew_install :editorconfig
+  brew_install :grip
+  brew_install :libvterm
+  brew_install :pygments
+  brew_install :pandoc
+  brew_install :shellcheck
+  brew_install :shfmt
+  brew_install :tidy_html5
+  brew_install :wordnet
+end
+
+setup :miscellaneous_cli_tools do
+  brew_install :cowsay
+  brew_install :defaultbrowser
+  brew_tap "jmromer/fortune-for-grownups"
+  brew_install :fortune_for_grownups, options: :build_from_source
+  brew_install "yt-dlp/taps/yt-dlp"
+end
+
+setup :mac_tools do
+  brew_install :pinentry_mac
+  brew_install :osxutils
+  brew_install :reattach_to_user_namespace
+  cask_install :karabiner_elements
+end
+
+setup :editors do
+  brew_install :macvim, options: :head
+  brew_tap "d12frosted/emacs-plus"
+  brew_install :emacs_plus,
+               options: %i[
+                 with_dbus
+                 with_debug
+                 with_imagemagick
+                 with_native_comp
+                 with_no_frame_refocus
+                 with_no_titlebar_and_round_corners
+                 with_xwidgets
+               ]
+end
+
+setup :asdf_plugins do
+  setup(:ruby)   { asdf_install(:ruby)   }
+  setup(:python) { asdf_install(:python) }
+  setup(:nodejs) { asdf_install(:nodejs) }
+end
+
+setup :doom_config do
+  script_install :doom
+end
+
+setup :pd_tool do
+  asdf_install :golang
+  install_launchagent "conclave.pd.refresh"
+  script_install :pd
+end
+
+perform :cleanups do
+  brew_cleanup
+  brew_doctor
+end
+
+puts "\n\nThat's it! Restart and run the customization script."
