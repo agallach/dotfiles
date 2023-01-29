@@ -1,0 +1,75 @@
+[submodule "share/asdf-manager"]
+	path = share/asdf-manager
+	url = https://github.com/jmromer/asdf.git
+	branch = xdg-compatible
+	update = rebase
+[submodule "share/zsh/zsh-syntax-highlighting"]
+	path = share/zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	branch = master
+	update = rebase
+[submodule "share/zsh/zsh-vim-mode"]
+	path = share/zsh/zsh-vim-mode
+	url = https://github.com/softmoth/zsh-vim-mode.git
+	branch = main
+	update = rebase
+[submodule "share/fzf"]
+	path = share/fzf
+	url = https://github.com/junegunn/fzf.git
+	branch = master
+	update = rebase
+[submodule "share/vim/vim-plug"]
+	path = share/vim/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
+	branch = master
+	update = rebase
+[submodule "share/pd"]
+	path = share/pd
+	url = https://github.com/jmromer/pd.git
+	branch = master
+	update = rebase
+[submodule "share/tmux/tpm"]
+	path = share/tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
+	branch = master
+	update = rebase
+[submodule "share/tmux/tmux-yank"]
+	path = share/tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
+	branch = master
+	update = rebase
+[submodule "share/tmux/tmux-prefix-highlight"]
+	path = share/tmux/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+	branch = master
+	update = rebase
+[submodule "share/tmux/tmux-open"]
+	path = share/tmux/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open.git
+	branch = master
+	update = rebase
+[submodule "share/tmux/tmux-copycat"]
+	path = share/tmux/tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat
+	branch = master
+	update = rebase
+[submodule "share/git_diet"]
+	path = share/git_diet
+	url = https://github.com/jmromer/git_diet.git
+	branch = master
+	update = rebase
+[submodule "share/doomemacs"]
+	path = share/doomemacs
+	url = https://github.com/doomemacs/doomemacs
+	branch = master
+	update = rebase
+[submodule "share/spacemacs"]
+	path = share/spacemacs
+	url = https://github.com/syl20bnr/spacemacs
+	branch = master
+	update = rebase
+[submodule "config/emacs"]
+	path = config/emacs
+	url = https://github.com/plexus/chemacs2.git
+	branch = master
+	update = rebase
