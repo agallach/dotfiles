@@ -119,7 +119,7 @@ setup :development_tools do
   brew_install "jmromer/global/global"
 
   brew_tap "homebrew/cask-versions"
-  cask_install :iterm2
+  cask_install :iterm2_nightly
 end
 
 setup :text_editing_cli_tools do
