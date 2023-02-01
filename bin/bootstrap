@@ -75,6 +75,7 @@ setup :gui_apps do
   cask_install :slack
   cask_install :spotify
   cask_install :sqlpro_studio
+  cask_install :tuple
   cask_install :vlc
   cask_install :zoom
 end
